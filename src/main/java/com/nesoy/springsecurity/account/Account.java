@@ -25,6 +25,14 @@ public class Account {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -33,7 +41,12 @@ public class Account {
         return role;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public void encodePassword(String password) {
         this.password = password;
     }
+
 }
