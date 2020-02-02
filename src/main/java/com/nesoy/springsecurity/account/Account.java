@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 public class Account {
@@ -32,6 +34,6 @@ public class Account {
     }
 
     public void encodePassword(String password) {
-        this.password = "{noop}" + password;
+        this.password = password;
     }
 }
