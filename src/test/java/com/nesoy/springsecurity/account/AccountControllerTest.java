@@ -1,13 +1,12 @@
 package com.nesoy.springsecurity.account;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.anonymous;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.lang.annotation.Retention;
@@ -22,6 +21,13 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
+@Test
+@Retention(RetentionPolicy.RUNTIME)
+@WithMockUser(username = "nesoy", roles = "USER")
+@interface WithUserTest {
+
+}
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -114,12 +120,5 @@ class AccountControllerTest {
         mockmvc.perform(formLogin().user("nesoy").password("1234"))
                 .andExpect(unauthenticated());
     }
-
-}
-
-@Test
-@Retention(RetentionPolicy.RUNTIME)
-@WithMockUser(username = "nesoy", roles = "USER")
-@interface WithUserTest {
 
 }
