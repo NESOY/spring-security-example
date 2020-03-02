@@ -25,3 +25,13 @@
     - WebExpressionVoter 
 
     
+#### FilterSecurityInterceptor
+- AbstractSecurityInterceptor
+- AccessDescisionManager 처리
+
+#### ExceptionTranslationFilter
+- AuthenticationException
+    - AuthenticationEntryPoint
+- AccessDeniedException
+    - 익명사용자 -> AuthenticationEntryPoint
+    - 사용자 -> AccessDeniedHandler 위임
